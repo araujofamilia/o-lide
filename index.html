@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>O lide · treino para a prova de Jornalismo Impresso Diário</title>
+<meta name="description" content="Treino para a prova escrita de Jornalismo Impresso Diário, turma matutina (PUC-Campinas, 2026/2). Quatro perguntas dissertativas por rodada, a partir de casos reais. Não vale nota.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --papel:#efe8d8; --papel2:#e6dcc6; --tinta:#1d1b18; --cinza:#6b665d; --linha:#d6c9ac;
+  --azul:#1f3a6e; --vermelho:#b3121a; --verde:#2e7d4f; --ouro:#c9922e;
+  --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --titulo:"Playfair Display",Georgia,serif;
+  --sans:Inter,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--papel);color:var(--tinta);font-family:var(--serif);font-size:18px;line-height:1.6;
+  background-image:radial-gradient(rgba(0,0,0,.035) 1px,transparent 1px);background-size:4px 4px;min-height:100vh}
+button,input,textarea{font:inherit;color:inherit}
+a{color:var(--vermelho)}
+.wrap{max-width:900px;margin:0 auto;padding:0 18px 80px}
+.sans{font-family:var(--sans)}
+#barra{position:sticky;top:0;z-index:20;background:var(--tinta);color:#f6f1e7;font-family:var(--sans);font-size:14px}
+#barra .in{max-width:900px;margin:0 auto;padding:8px 18px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+#barra .marca{font-family:var(--titulo);font-weight:900;font-size:20px;letter-spacing:.3px}
+#barra .esp{flex:1}
+#barra .chip{background:rgba(255,255,255,.1);border-radius:999px;padding:3px 10px;white-space:nowrap}
+#barra button{background:none;border:1px solid rgba(255,255,255,.35);color:#f6f1e7;border-radius:6px;padding:3px 10px;cursor:pointer}
+#barra button:hover{background:rgba(255,255,255,.12)}
+@media (max-width:640px){#barra{position:static}}
+.masthead{text-align:center;border-bottom:4px double var(--tinta);padding:26px 0 10px;margin-bottom:6px}
+.masthead .kicker{font-family:var(--sans);text-transform:uppercase;letter-spacing:2.5px;font-size:12px;color:var(--cinza)}
+.masthead h1{font-family:var(--titulo);font-weight:900;font-size:clamp(52px,11vw,104px);line-height:.95;margin:8px 0 6px;letter-spacing:-1px}
+.masthead .sub{font-style:italic;font-size:20px}
+.dateline{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font-family:var(--sans);font-size:12px;text-transform:uppercase;letter-spacing:1.3px;border-bottom:1px solid var(--tinta);padding:6px 0;margin-bottom:22px}
+.box{background:#fffdf7;border:1px solid var(--linha);border-radius:4px;padding:20px 22px;box-shadow:0 1px 0 rgba(0,0,0,.04);margin-bottom:22px}
+.aviso{border:2px solid var(--vermelho);background:#fff6f3;padding:16px 18px;border-radius:4px;font-family:var(--sans);font-size:15.5px;line-height:1.55;margin-bottom:22px}
+.aviso b{color:var(--vermelho)}
+.aviso p{margin:0 0 8px}.aviso p:last-child{margin:0}
+label.l{display:block;font-family:var(--sans);font-weight:600;font-size:14px;margin:14px 0 6px}
+input.campo{width:100%;padding:12px 14px;border:2px solid var(--tinta);border-radius:4px;background:#fff;font-family:var(--sans);font-size:17px}
+input.campo:focus,textarea:focus{outline:3px solid var(--ouro);outline-offset:1px}
+.nota{font-family:var(--sans);font-size:13.5px;color:var(--cinza);margin:8px 0 0}
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--sans);font-weight:800;font-size:16px;border:2px solid var(--tinta);background:var(--tinta);color:#f6f1e7;padding:11px 20px;border-radius:4px;cursor:pointer;box-shadow:3px 3px 0 var(--ouro);transition:transform .08s,box-shadow .08s;text-decoration:none}
+.btn:hover{transform:translate(-1px,-1px);box-shadow:4px 4px 0 var(--ouro)}
+.btn:active{transform:translate(2px,2px);box-shadow:0 0 0}
+.btn.sec{background:transparent;color:var(--tinta);box-shadow:3px 3px 0 var(--linha)}
+.btn.verm{background:var(--vermelho);border-color:var(--vermelho);box-shadow:3px 3px 0 var(--tinta)}
+.btn[disabled]{opacity:.45;cursor:not-allowed;transform:none;box-shadow:none}
+.acoes{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
+.erro{color:var(--vermelho);font-family:var(--sans);font-size:14px;margin-top:8px;min-height:1em}
+.questao{background:#fffdf7;border:1px solid var(--linha);border-top:5px solid var(--azul);border-radius:4px;padding:20px 22px 22px;margin:0 0 26px}
+.q-topo{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font-family:var(--sans);font-size:12.5px;text-transform:uppercase;letter-spacing:1.2px;color:var(--azul);font-weight:800}
+.q-topo .num{color:var(--vermelho)}
+.questao h2{font-family:var(--titulo);font-weight:900;font-size:clamp(25px,4.2vw,34px);line-height:1.12;margin:10px 0 6px}
+.fonte{font-family:var(--sans);font-size:13.5px;color:var(--cinza);margin:0 0 14px;border-bottom:1px solid var(--linha);padding-bottom:10px}
+.contexto p{margin:0 0 12px}
+.fatos{background:var(--papel);border-left:4px solid var(--ouro);padding:12px 16px 4px 18px;margin:4px 0 14px}
+.fatos h3,.pede h3{font-family:var(--sans);font-size:13px;text-transform:uppercase;letter-spacing:1.4px;margin:0 0 8px;color:var(--tinta)}
+.fatos ul{margin:0;padding-left:20px}.fatos li{margin:0 0 8px}
+.pede{border:2px solid var(--tinta);border-radius:4px;padding:14px 18px 6px;margin:8px 0 12px;background:#fff}
+.pede ol{list-style:none;margin:0;padding:0}
+.pede li{margin:0 0 10px;padding-left:28px;position:relative}
+.pede li b.letra{position:absolute;left:0;top:0;font-family:var(--sans);color:var(--vermelho)}
+.base{font-family:var(--sans);font-size:13.5px;color:#3a362f;background:var(--papel2);border-radius:3px;padding:8px 12px;margin:0 0 12px}
+textarea.resp{width:100%;min-height:230px;padding:12px 14px;border:2px solid var(--tinta);border-radius:4px;background:#fff;font-family:var(--serif);font-size:17px;line-height:1.55;resize:vertical}
+.cont{font-family:var(--sans);font-size:13px;color:var(--cinza);margin-top:6px;display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.cont.ok{color:var(--verde)}
+.envio{background:#fffdf7;border:2px solid var(--tinta);border-radius:4px;padding:18px 20px;margin:10px 0 26px;font-family:var(--sans);font-size:15.5px}
+.status{font-family:var(--sans);font-size:15px;margin:10px 0 0}
+.status.ok{color:var(--verde);font-weight:600}
+.status.fila{color:var(--ouro);font-weight:600}
+.lista{list-style:none;margin:0;padding:0;font-family:var(--sans);font-size:15px}
+.lista li{border-bottom:1px solid var(--linha);padding:10px 0;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center}
+.lista .st{font-weight:600}
+.lista .st.ok{color:var(--verde)}.lista .st.fila{color:var(--ouro)}
+footer{font-family:var(--sans);font-size:13px;color:var(--cinza);text-align:center;margin-top:30px;border-top:1px solid var(--linha);padding-top:14px}
+.oculto{display:none!important}
+</style>
+</head>
+<body>
+<div id="barra"><div class="in">
+  <span class="marca">O lide</span>
+  <span class="chip" id="chipPrazo"></span>
+  <span class="esp"></span>
+  <span class="chip oculto" id="chipAluno"></span>
+  <button type="button" id="btMinhas" class="oculto">Minhas rodadas</button>
+  <button type="button" id="btSair" class="oculto">Trocar aluno</button>
+</div></div>
+
+<div class="wrap">
+  <header class="masthead">
+    <div class="kicker" id="kicker"></div>
+    <h1>O lide</h1>
+    <div class="sub">Treino para a prova escrita de Jornalismo Impresso Diário</div>
+  </header>
+  <div class="dateline"><span>PUC-Campinas · Faculdade de Jornalismo</span><span id="linhaProva"></span></div>
+
+  <main id="app" aria-live="polite"></main>
+
+  <footer>
+    Os casos são resumos de reportagens publicadas nas edições indicadas em cada pergunta; leia os originais nos jornais.<br>
+    Site feito com apoio de IA, sob supervisão do professor Artur Araujo.
+  </footer>
+</div>
+
+<script src="config.js?v=2026-11-23a"></script>
+<script src="banco.js?v=2026-11-23a"></script>
+<script src="quiz.js?v=2026-11-23a"></script>
+</body>
+</html>
