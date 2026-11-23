@@ -19,6 +19,6 @@ var CONFIG = {
   perguntasPorRodada: 4,
   minPalavras: 60,
   maxCaracteres: 10000,
-  appsScript: "",
-  versao: "2026-11-23a"
+  appsScript: "https://script.google.com/macros/s/AKfycbxmE8Abdkm9Nwt3IHqJhWXT7C_TNckmz63vRiXBrUpqBY8kf_u0y_YN9_Dc9j7AcwXp/exec",
+  versao: "2026-11-23b"
 };
